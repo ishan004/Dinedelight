@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    
+}
+.container{
+    width: 100%;
+    max-width: 1920px;
+    height: 1080px;
+    background-color: #FFFADC; 
+    margin: 0;
+    padding: 0;
+    
+  
+}
+.Navbar{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+   
+}
+
+.logo img {
+    max-height: 50px; 
+}
+
+.Navbar a {
+    position: relative;
+    padding: 10px; /* Optional padding for each navbar item */
+    text-decoration: none;
+    color: #5819bd; /* Optional text color */
+}
+
+.Navbar a:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color: #F3C00F; /* Adjust the color of the line */
+    bottom: 0;
+    left: 0;
+}
+
+
+
+.bodytext{
+   font-family: "Lucida Console", Courier, monospace;
+    margin: 100px;
+    color: #462976;    
+}
+
+.bodytext h1 {
+    font-weight: bold;
+}
+
+.bodytextdesp{
+    color: black;
+    margin-top: -20px;
+    
+}
+
+.lets-go-btn{
+    position: absolute;
+    margin-left: 500px;
+    background-color: transparent;
+            color: #462976;
+            border: 2px solid #462976; /* Add a border for visibility */
+            padding: 10px 20px; /* Adjust padding as needed */
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+.lets-go-btn:hover {
+    background-color: white;
+    color: #5d00f1; /* Change text color on hover if needed */
+}
+
+.account{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #EB7C0E;
+    height: 300px;
+      
+}
+
+.register{
+    margin-top: 10px ;
+    background-color: #462976;
+    color: #EB7C0E;
+    border: 2px solid #462976; /* Add a border for visibility */
+    padding: 10px 20px; /* Adjust padding as needed */
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.register:hover {
+    background-color: white;
+    color: #5d00f1; /* Change text color on hover if needed */
+}
+
+
+
+#sw-js-blob-svg{
+    position: absolute;
+    width: 900px;
+    height: 800px;
+    top: 94px; /* Adjust top position as needed */
+    left: 800px; /* Adjust left position as needed */
+}
