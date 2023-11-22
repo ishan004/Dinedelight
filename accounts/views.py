@@ -23,7 +23,7 @@ def login_page(request):
         user_obj = authenticate(username=email, password=password)
         if user_obj:
             login(request,user_obj)
-            return redirect('/')
+            return redirect('/social_book/profile')
         
         messages.warning(request, "Invalid username or password")
         return HttpResponseRedirect(request.path_info)
