@@ -29,14 +29,14 @@ body, html {
     max-height: 50px; 
 }
 
-.Navbar a {
+.Navbaritems a {
     position: relative;
     padding: 10px; /* Optional padding for each navbar item */
     text-decoration: none;
     color: #5819bd; /* Optional text color */
 }
 
-.Navbar a:hover::after {
+.Navbaritems a:hover::after {
     content: '';
     position: absolute;
     width: 100%;
