@@ -10,7 +10,7 @@ class User_profile(base_model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'profile')
     is_email_verified = models.BooleanField(default=False)
     email_token = models.CharField(max_length=100, null=True,blank=True)
-    profile_image = models.ImageField(upload_to = 'profile')
+    profile_image = models.ImageField(upload_to = 'profile', default="blankprofile.png")
 
 @receiver(post_save, sender = User)
 def send_email_token(sender, instance, created, **kwargs):

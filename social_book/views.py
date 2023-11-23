@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+
+ 
+@login_required(login_url='login')
 def dashboard(request):
-    return render(request, 'social_book/profile.html')
+    return render(request, 'social_book/dashboard.html')

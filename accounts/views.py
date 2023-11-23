@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import User_profile
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 
 def login_page(request):
@@ -23,12 +25,18 @@ def login_page(request):
         user_obj = authenticate(username=email, password=password)
         if user_obj:
             login(request,user_obj)
-            return redirect('/social_book/profile')
+            return redirect('/social_book/dashboard')
         
         messages.warning(request, "Invalid username or password")
         return HttpResponseRedirect(request.path_info)
     return render(request, 'accounts/login.html')
-        
+
+@login_required(login_url='login')
+def logout_view(request):
+    logout(request)
+    return redirect('index')
+
+       
 def register_page(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
