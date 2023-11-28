@@ -6,5 +6,7 @@ urlpatterns = [
     path('register/', register_page, name="register"),
     path('activate/<email_token>', activate_email, name="activate"),
     path('logout/', logout_view, name="logout"),
+    
+    
    
 ]

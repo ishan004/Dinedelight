@@ -5,12 +5,21 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver 
 import uuid
 from base.email import send_activation_email
+from datetime import datetime
+
 
 class User_profile(base_model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'profile')
     is_email_verified = models.BooleanField(default=False)
     email_token = models.CharField(max_length=100, null=True,blank=True)
-    profile_image = models.ImageField(upload_to = 'profile', default="blankprofile.png")
+    bio = models.TextField(blank=True)
+    location = models.CharField(max_length=100, blank=True)
+    profile_image= models.ImageField(upload_to ='profile_image/', default="/profile_image/blank-profile-picture.png")
+    
+    def __str__(self):
+        return self.user.username
+    
+    
 
 @receiver(post_save, sender = User)
 def send_email_token(sender, instance, created, **kwargs):
@@ -22,3 +31,29 @@ def send_email_token(sender, instance, created, **kwargs):
             send_activation_email(email,email_token)
     except Exception as e:
         print(e)
+
+
+
+class Post(base_model):
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
+    image = models.ImageField(upload_to='post_images/')
+    caption = models.TextField()
+    created_at = models.DateTimeField(default=datetime.now())
+    no_of_likes = models.IntegerField(default=0)
+    
+    
+    def __str__(self):
+        return self.user.username
+    
+    
+    
+    
+    
+    class Meta:
+        ordering= ['-created_at']    
+        
+
+    
+    
+    
