@@ -53,7 +53,7 @@ $(document).ready(function() {
   </div>
   <div class="Navbaritems">
     
-    
+    <a href = "{%url 'dashboard'%}" >{{user.username}}</a>
   <a href="{%url 'index'%}" class="{%if request.path == '/'%}active{%endif%}"><i class="home"></i> Home</a>
   <a href="#" ><i class="contact"></i> Contact</a>
   <a href="#" ><i class="about"></i> About</a>

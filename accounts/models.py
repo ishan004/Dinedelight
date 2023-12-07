@@ -52,7 +52,26 @@ class Post(base_model):
     
     class Meta:
         ordering= ['-created_at']    
-        
+    
+    
+class LikePost(models.Model):
+    post_id = models.CharField(max_length=500)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="likepost")
+    
+    def __str__(self):
+        return self.user.username
+    
+
+
+class Followers(models.Model):
+    follower = models.CharField(max_length=100)   
+    user = models.CharField(max_length=100)
+    
+
+    
+    
+    def __str__(self):
+        return self.user
 
     
     

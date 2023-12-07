@@ -14,6 +14,9 @@ from django.core.exceptions import ValidationError
 
 
 def login_page(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -67,32 +70,31 @@ def logout_view(request):
     
 #     return render(request, 'accounts/register.html')
 class RegistrationForm(forms.Form):
-    first_name = forms.CharField()
-    last_name = forms.CharField()
+    
+    username = forms.CharField()
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
 def register_page(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
 
         if form.is_valid():
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
+            username = form.cleaned_data['username']
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
 
             # Additional email validation using a regular expression
+            
+            if not re.match(r'^[a-zA-Z][a-zA-Z0-9_-]{2,29}$', username):
+                form.add_error('first_name', 'Invalid format')
+                
             if not re.match(r'^[a-zA-Z0-9_.+-]+@gmail\.com$', email):
                 form.add_error('email', 'Invalid email format')
-            
-            if not re.match(r'^[A-Za-z]+$', first_name):
-                form.add_error('first_name', 'Invalid format')
-            
-            if not re.match(r'^[A-Za-z]+$', last_name):
-                form.add_error('last_name', 'Invalid format')
-            
-            
+
                 return render(request, 'accounts/register.html', {'form': form})
 
             user_obj = User.objects.filter(username=email)
@@ -100,7 +102,7 @@ def register_page(request):
                 messages.warning(request, "Email already registered")
                 return HttpResponseRedirect(request.path_info)
 
-            user_obj = User.objects.create(first_name=first_name, last_name=last_name, email=email, username=email)
+            user_obj = User.objects.create(username=username, email=email)
             user_obj.set_password(password)
             user_obj.save()
 

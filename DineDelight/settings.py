@@ -145,3 +145,4 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ishanbhusal0@gmail.com'
 EMAIL_HOST_PASSWORD = 'dxvqomtaehedfwma'
+DEFAULT_FROM_EMAIL = "Delight ishanbhusal0@gmail.com"
