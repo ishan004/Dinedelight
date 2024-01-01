@@ -1,4 +1,4 @@
-* {
+ * {
     box-sizing: border-box;
 }
 
@@ -6,10 +6,9 @@ body, html {
     margin: 0 !important;
     padding: 0 !important;
     
-}
+} 
 .container{
-    width: 100%;
-    max-width: 1920px;
+    max-width: 1920px; 
     height: 1080px;
     background-color: #FFFADC; 
     margin: 0;
@@ -80,6 +79,22 @@ body, html {
     background-color: white;
     color: #5d00f1; /* Change text color on hover if needed */
 }
+.lets-go-btn1{
+    position: absolute;
+    margin-left: 200px;
+    background-color: transparent;
+            color: #462976;
+            border: 2px solid #462976; /* Add a border for visibility */
+            padding: 10px 20px; /* Adjust padding as needed */
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+.lets-go-btn1:hover {
+    background-color: white;
+    color: #5d00f1; /* Change text color on hover if needed */
+}
 
 .account{
     display: flex;
@@ -110,9 +125,10 @@ body, html {
 
 
 #sw-js-blob-svg{
-    position: absolute;
+    position: absolute; 
     width: 900px;
     height: 800px;
-    top: 94px; /* Adjust top position as needed */
-    left: 800px; /* Adjust left position as needed */
+      top: 94px; 
+    left: 800px;   
 }
+

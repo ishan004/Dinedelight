@@ -16,12 +16,16 @@
     <link rel="stylesheet" href='/media/assets/css/uikit.css' >
     <link rel="stylesheet" href='/media/assets/css/style.css' >
     <link rel="stylesheet" href='/media/assets/css/tailwind.css' >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
 
             <header>
                 <div class="header_inner">
+                    <form action="{%url 'search' %}" method="POST">
+                        {%csrf_token%}
                     <div class="left-side">
                         <!-- Logo -->
                         <div id="logo" class=" uk-hidden@s">
@@ -34,19 +38,18 @@
                             <i class="uil-bars"></i>
                         </div>-->
 
-                        <div class="header_search">
-                            <input type="text" placeholder="Search for username..">
-                            <div class="icon-search">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </div>
-                        </div>
+                       
+                            <input type="text" name="username" placeholder="Search for username..">&nbsp; &nbsp;
+                            <button type="submit"><i class="fa fa-search fa-1x"></i></button>
+
+                            
 
                     </div>
+                    
+                    
+                </form>
                     <div class="right-side lg:pr-4">
+                        <a href={%url 'recommendation'%}><p style="margin-right:20px; color:blue"> Recommend me</p> </a>
                          <!-- upload -->
                         <a href="#"
                             class="bg-pink-500 flex font-bold hidden hover:bg-pink-600 hover:text-white inline-block items-center lg:block max-h-10 mr-4 px-4 py-2 rounded shado text-white">
@@ -121,6 +124,8 @@
                         </a>
                         <div uk-drop="mode: click;offset:9" class="header_dropdown profile_dropdown border-t">
                             <ul>
+                                <li><a href="{%url "profile" uid=user.username %}"> Profile </a> </li>
+
                                 <li><a href="{%url "settings"%}"> Account setting </a> </li>
                               
                                 <li><a href="{%url 'logout'%}"> Log Out</a></li>
@@ -156,7 +161,7 @@
                                     <span class="block font-semibold "><a href="/social_book/profile/{{post.user}}">@{{post.user.username}}</a></span>
                                 </div>
                               <div>
-                                <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 "></i> </a>
+                                {% comment %} <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 "></i> </a> {% endcomment %}
                                 <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100  " uk-drop="mode: hover;pos: top-right">
                               
                                     <ul class="space-y-1">

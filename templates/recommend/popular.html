@@ -1,0 +1,37 @@
+{%extends 'base/base.html'%}
+{% block start %}
+
+ <body style="background-color:#FFFADC; ">
+
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-info" style="font-size:50px">Top Restaurant</h1>
+            </div>
+
+            {% for restro in restros %}
+
+                 <div class="col-md-3" style="margin-top:50px" >
+               <div class="card">
+                   <div class="card-body" >
+                       
+                       <img class ="card-img-top" style='height:170px;' src={{restro.Image_URL}}>
+                       <p class="text-black">{{restro.Title}}</p>
+                       <p class="text-black">{{restro.location}}</p>
+                       <p class="text-black">Average Rating - {{restro.ratings}} </p>
+                            </div>
+                   </div>
+               </div>
+            {% endfor %}
+
+
+
+
+
+
+           </div>
+        </div>
+
+
+</body>
+{% endblock %}

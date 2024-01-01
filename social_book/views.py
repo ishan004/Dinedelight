@@ -158,3 +158,31 @@ def follow_view(request):
             return redirect('/social_book/profile/'+user)
     else:
         return redirect('dashboard')
+    
+@login_required(login_url='login')
+def search_view(request):
+    
+    user_object = User.objects.get(username=request.user.username)
+    user_profile = User_profile.objects.get(user=user_object)
+    
+    if request.method=='POST':
+        username=request.POST['username']
+        
+        username_object = User.objects.filter(username__icontains=username)
+        
+        username_profile = []
+        username_profile_list = []
+        
+        for users in username_object:
+            username_profile.append(users.id)
+        
+        
+        for ids in username_profile:
+            profile_lists = User_profile.objects.filter(user_id=ids)
+            
+            username_profile_list.append(profile_lists)
+          
+        username_profile_list  = list(chain(*username_profile_list))
+        print(username_profile_list)
+    return render(request, 'social_book/search.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list})
+
