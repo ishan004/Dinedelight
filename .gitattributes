@@ -1,3 +1,6 @@
-// linguist-language=JavaScript
 
-example_folder/* linguist-language=Python
+*.ipynb linguist-detectable=false 
+*.js linguist-detectable=false
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+
