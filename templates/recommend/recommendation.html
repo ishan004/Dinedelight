@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <title>Book Recommender System</title>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href='/media/assets/css/style.css' >
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .text-white{
+            color:white
+        }
+        
+    </style>
 </head>
-<style>
-    .text-white{
-        color:white
-    }
-</style>
+
 <body style="background-color:#FFFADC; ">
 
     <nav class="navbar" style="background-color:#FFFADC; ">
@@ -28,13 +33,16 @@
                 <h1 class="text-info" style="font-size:50px">Recommend Me</h1>
                 <form action="{%url 'recommend'%}" method="POST" >
                     {% csrf_token %}
-                    <input name="restaurant_name" type="text" class="form-control"><br>
-                    <input type="submit" class="btn btn-lg btn-warning">
+                    <input name="restaurant_name" type="text" class="form-control" value="{{ request.POST.restaurant_name }}"><br>
+                    <input type="submit" class="btn btn-lg btn-warning" value="Submit" > 
+                    <p>The Results are:</p>
+                    
                 </form>
             </div>
-
+            
              {% if data1 %}
             {% for item in data1 %}
+            
             <div class="col-md-3" style="margin-top:50px" >
                 <div class="card">
                     <div class="card-body" >
@@ -42,7 +50,7 @@
                         <img class ="card-img-top" style='height:170px;' src={{item.2}}>
                         <p class="text-black">{{item.0}}</p>
                         <p class="text-black">{{item.1}}</p>
-                        
+                        {% comment %} <button class="btn btn-success">Bookmark</button> {% endcomment %}
                              </div>
                     </div>
                 </div>
@@ -62,7 +70,7 @@
 
            </div>
         </div>
-
-
+        
+        <script src= '/media/assets/js/bookmark.js' ></script>
 </body>
 </html>

@@ -45,30 +45,7 @@ def logout_view(request):
     return redirect('index')
 
 
-# def register_page(request):
-#     if request.method == 'POST':
-#         first_name = request.POST.get('first_name')
-#         last_name = request.POST.get('last_name')
-#         email = request.POST.get('email')
-#         password = request.POST.get('password')
-#         user_obj = User.objects.filter(username = email)
-        
-    
-        
-#         if user_obj.exists():
-#             messages.warning(request, "Email already registered")
-#             return HttpResponseRedirect(request.path_info)
-        
-#         print(email)
-        
-#         user_obj = User.objects.create(first_name = first_name, last_name=last_name, email=email, username=email)
-#         user_obj.set_password(password)
-#         user_obj.save()
-        
-#         messages.success(request, "An email has been sent to your mail.")
-#         return HttpResponseRedirect(request.path_info)
-    
-#     return render(request, 'accounts/register.html')
+
 class RegistrationForm(forms.Form):
     
     username = forms.CharField()

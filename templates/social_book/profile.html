@@ -31,7 +31,7 @@
 				<form action="{% url 'follow'%}" method="POST">
 					{% csrf_token %}
 					<div class="add-btn">
-					<span style="color: white; font-size: 27px;  "><b><u><a href="/social_book/dashboard">Home</a></u></b></span>
+					<span style="color: white; font-size: 27px;  "><b><u><a href="/social_book/dashboard">𝕯𝖎𝖓𝖊𝕸𝖊𝖉𝖎𝖆</a></u></b></span>
                     {%if user_post_length == 0%}
 					<span style="color: white; font-size: 27px;"><b>No Post</b></span>
                     {%elif user_post_length == 1%}
@@ -114,7 +114,7 @@
 					</div>
 				</div>
 			</div>
-		</section><!-- top area -->
+		</section><!--  area -->
 		<section>
 			<div class="bio">
 				{{user_profile.bio}}
@@ -170,7 +170,18 @@
 		</div>	
 	</section>
 
-	
+	<div class="footer" style="background-color: #333;
+    color: white;
+	position: fixed;
+            bottom: 0;
+			width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 8px;">
+        <div >
+            &copy; 2024 Ishan Bhusal. All rights reserved.
+        </div>
+      </div>
 	
 	<script data-cfasync="false" src='/../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' ></script><script src="/media/js/main.min.js"></script>
 	<script src= '/media/js/script.js' ></script>

@@ -1,32 +1,24 @@
 {%extends 'base/base.html'%}
 {% block start %}
  
-
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  
+  <title>Document</title>
+</head>
  <div class="bodytext"><h1 >Helping you find Your Taste</h1>
 <p class="bodytextdesp"><br>We Help you in finding the best possible place <br> that suits your taste.</p>
  
 
- <!--?xml version="1.0" standalone="no"?-->              
- <svg id="sw-js-blob-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">   
+</div>
 
-   <defs>        
-     
-                 <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">                           
-                   <stop id="stop1" stop-color="rgba(248, 117, 55, 1)" offset="0%"></stop>                            <stop id="stop2" stop-color="rgba(251, 168, 31, 1)" offset="100%"></stop>                        
-                  </linearGradient>                   
-                   </defs>   
-                   <mask id='mask1' mask-type="alpha">
-                    <path fill="url(#sw-gradient)" d="M21.3,-35.8C27.6,-33.2,32.8,-27.6,34.2,-21.1C35.5,-14.6,33,-7.3,31.3,-1C29.5,5.3,28.4,10.5,26,15.2C23.6,19.8,19.8,23.8,15.3,26.9C10.7,29.9,5.4,32,-0.8,33.4C-7,34.8,-13.9,35.5,-19.3,32.9C-24.7,30.3,-28.5,24.5,-31.6,18.5C-34.6,12.5,-36.8,6.2,-38.4,-0.9C-40,-8.1,-41,-16.2,-37.7,-21.7C-34.4,-27.3,-26.9,-30.4,-19.9,-32.6C-12.9,-34.7,-6.4,-36,0.5,-36.9C7.5,-37.8,15,-38.3,21.3,-35.8Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: all 0.3s ease 0s;" stroke="url(#sw-gradient)"></path>  
-
-                   </mask>    
-                   <g mask="url(#mask1)"> 
-                    <path fill="url(#sw-gradient)" d="M21.3,-35.8C27.6,-33.2,32.8,-27.6,34.2,-21.1C35.5,-14.6,33,-7.3,31.3,-1C29.5,5.3,28.4,10.5,26,15.2C23.6,19.8,19.8,23.8,15.3,26.9C10.7,29.9,5.4,32,-0.8,33.4C-7,34.8,-13.9,35.5,-19.3,32.9C-24.7,30.3,-28.5,24.5,-31.6,18.5C-34.6,12.5,-36.8,6.2,-38.4,-0.9C-40,-8.1,-41,-16.2,-37.7,-21.7C-34.4,-27.3,-26.9,-30.4,-19.9,-32.6C-12.9,-34.7,-6.4,-36,0.5,-36.9C7.5,-37.8,15,-38.3,21.3,-35.8Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: all 0.3s ease 0s;" stroke="url(#sw-gradient)"></path>  
-                    <image class="svgimg" href ="/media/images/chicken.jpg" x="10" y="1" width="100" height="100" >
-                 </g>
-                  </svg> </div>
  <a href="{% url 'popular'%}"><button class="lets-go-btn1" >Popular in Chitwan</button></a>
 
  <a href="{% url 'recommendation'%}"><button class="lets-go-btn">Recommend Me</button></a>
+ <image class="svgimg" src="/media/images/chicken.jpg"  >
 </div>
 
 <div class= "account">
@@ -39,6 +31,60 @@ Are you ready to discover Your taste, Share Your Experience, and discover a new 
     <a href="{%url 'register'%}"><button class="register">Register Now</button></a>
   
 </div>
+
+<div class="aboutus" id='about'>
+  <h1> About Us </h1>
+  <p class="accounttextt">
+    In the rapidly evolving dining scene, finding the ideal culinary experience becomes increasingly difficult. Introducing "Dine-Delight" - a user-centric platform designed to make discovering tailored meal options easier. This revolutionary approach allows consumers to easily find tailored restaurant recommendations based on their tastes, location, and budget. 
+"Dine-Delight" uses a collaborative filtering system to study user actions, reducing decision-making dilemmas. Users can create profiles and share out their experience in form of a post of their favorite restaurants. With an emphasis on travel and time restrictions, the website combines real-time updates, user ratings, and seamless mapping services to create a world of culinary choices and a wonderful dining experience.
+  </p></div>
+  
+  <section aria-label="Newest Photos">
+    <div class="carousel" data-carousel>
+      <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
+      <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
+      <ul data-slides>
+        <li class="slide" data-active>
+          <img src="/media/images/1.jpg" alt="Nature Image #1">
+        </li>
+        <li class="slide">
+          <img src="/media/images/2.jpg" alt="Nature Image #2">
+        </li>
+        <li class="slide">
+          <img src="/media/images/3.jpg" alt="Nature Image #3">
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <div class="contact-section" id="contact">
+    <h2>Contact Us</h2>
+    <form action="#" method="post">
+      {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<div class="footer">
+  <div >
+      &copy; 2024 Ishan Bhusal. All rights reserved.
+  </div>
+</div>
+
+
 
  {% endblock %}
     
