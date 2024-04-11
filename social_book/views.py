@@ -39,7 +39,14 @@ def dashboard(request):
     }
     return render(request, 'social_book/dashboard.html', context=context) 
 
+from PIL import Image
 
+# @login_required(login_url='login')
+# def cover_photo(request):
+#     user_profile = User_profile.objects.get(user= request.user)
+#     if request.method == 'POST':
+#         if request.FILES.get('image') == None:
+            
 
 @login_required(login_url='login')
 def setting(request):
@@ -56,7 +63,28 @@ def setting(request):
             user_profile.save()
             
         if request.FILES.get('image') != None:
+            # max_height = 300
+            # max_width = 200
             image = request.FILES.get('image')
+            
+            # width, height = image.size
+            # if width > max_width or height > max_height:
+            #     aspect_ration = width / height
+            #     new_width = min(width, max_width)
+            #     new_height = round(new_width / aspect_ration)
+                
+            #     image = image.resize((new_width, new_height), Image.ANTIALIAS)
+                
+                
+            #     left = (new_width - max_width) / 2
+            #     top = (new_height - max_height) / 2
+            #     right = (new_width + max_width) / 2
+            #     bottom = (new_height + max_height) / 2
+
+            #  # Crop the image
+            #     img = img.crop((left, top, right, bottom))
+                
+                
             bio = request.POST['bio']
             location = request.POST['location']
             
